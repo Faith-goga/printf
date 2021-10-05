@@ -17,13 +17,13 @@ int _printf(const char *format, ...)
 	{
 		switch (format[d++])
 		{
-			case c:
+			case 'c':
 			write(1, va_arg(ap, int), 1);
 			noch = noch + ((sizeof(va_arg(ap, int))) - 1);
-			case s:
+			case 's':
 			write(1, va_arg(ap, char *), 8);
 			noch = noch + ((sizeof(va_arg(ap, char*))) - 1);
-			case c:
+			case '%':
 			write(1, va_arg(ap, int), 1);
 			noch = noch + ((sizeof(va_arg(ap, int))) - 1);
 			default:
