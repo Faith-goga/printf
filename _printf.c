@@ -7,28 +7,38 @@
  * Return: Number of characters printed
  */
 
-int _printf(const char *format, ...)
-{
-	va_list ap;
-	int d = 0, noch = 0;
 
-	va_start(ap, format);
-	while (format && format[d])
+int _printf(const char * const format, ...)
+{
+va_list characters;
+int counter = 0;
+char *alpha;
+
+va_start(characters, format);
+while (format && format[counter])
+{
+	switch (format[counter++])
 	{
-		switch (format[d++])
-		{
-			case 'c':
-			write(1, va_arg(ap, int), 1);
-			noch = noch + ((sizeof(va_arg(ap, int))) - 1);
-			case 's':
-			write(1, va_arg(ap, char *), 8);
-			noch = noch + ((sizeof(va_arg(ap, char*))) - 1);
-			case '%':
-			write(1, va_arg(ap, int), 1);
-			noch = noch + ((sizeof(va_arg(ap, int))) - 1);
-			default:
-			continue;
-		}
+	case 'c':
+	printf("%c", va_arg(characters, int));
+	break;
+	case 'i':
+	printf("%d", va_arg(characters, int));
+	break;
+	case 'f':
+	printf("%f", (float)va_arg(characters, double));
+	break;
+	case 's':
+	alpha = va_arg(characters, char *);
+	if (!alpha)
+	alpha = "(nil)";
+	printf("%s", alpha);
+	break;
+	default:
+	continue;
 	}
-	return (noch);
+	printf(", ");
+}
+printf("\n");
+va_end(characters);
 }
