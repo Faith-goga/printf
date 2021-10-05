@@ -1,0 +1,29 @@
+NAME
+
+_printf
+
+SYNPOSIS
+	#include "main.h"
+	int _printf (const char *format, ...);
+
+DESCRIPTION
+The function _printf family mainly produces output according to a format as described below 
+
+FORMAT OF THE FORMAT STRING
+c - prints a character data type
+s - prints a string data type
+b - prints the symbol %
+d - prints an decimal number
+i - prints interger data type
+u - 
+0-
+x-
+X-
+S- prints string provided as input/argument
+p-
+
+Flag Characters
++ - This flag prints a number with the its sign 
+' '-This flag leaves space for a sign
+# - T
+0-This is a check protection filler  
